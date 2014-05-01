@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NPU Share Information Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="themes/jquery.mobile-1.1.1.min.css">
+		<link rel="stylesheet" href="themes/my-custom-theme.css.min.css" />
+		<link rel="stylesheet" href="themes/styles.css">
+		<!-- JavaScript HTML requirements -->
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.mobile-1.1.1.min.js"></script>
+		<script>
+			$(document).ready(showInfo);
+
+			function showInfo() {
+				
+				var url = "http://localhost:8888/query.jsp";
+				request = new XMLHttpRequest();
+				request.onload = function () {
+					if (request.status == 200) {
+						displayInfo(request.responseText);
+					}
+				};
+				request.open("GET", url);
+				request.send(null);
+				
+			}
+
+			function displayInfo(infosText) {
+				var infoId = window.localStorage.getItem("id");
+				
+				var infos = JSON.parse(infosText);
+				for (i = 0; i < infos.length; i++) {
+					
+					var info = infos[i];
+					if (info.ID==infoId)
+					{
+						$("label[for='Title']").text(info.title);
+						$("label[for='Category']").text(info.category);
+						$("label[for='Type']").text( info.type);
+						$("label[for='Date']").text( info.date);
+						$("label[for='Description']").text( info.description);
+					}
+				}
+			  }
+			
+		</script>
+	</head>
+	<body>
+		<div data-role="page" id="infoDetail">
+			<header data-role="header" data-theme="b" >
+				<h1>Information Details</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="index.html" data-icon="home" data-theme="b" rel="external">Home</a>
+						</li>
+						<li>
+							<a href="newinfo.html" data-icon="grid" rel="external" data-theme="b" >Post</a>
+						</li>
+						<li>
+							<a href="listinfos.html" data-icon="star" data-theme="b" rel="external">List</a>
+						</li>
+					</ul>
+				</div>
+			</header>
+
+			<section data-role="content" data-theme="a" >
+				<div id="infoDetailDiv">
+					<b>Title:</b>
+					<label for="Title" >&nbsp;</label><br>
+					<b>Category:</b>
+					<label for="Category" >&nbsp;</label><br>
+					<b>Type:</b>
+					<label for="Type" >&nbsp;</label><br>
+					<b>Date:</b>
+					<label for="Date" >&nbsp;</label><br>
+					<b>Description:</b>
+					<label for="Description" >&nbsp;</label><br>
+				</div>
+			</section>
+
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2013-2014</h4>
+			</div>
+		</div>
+	</body>
+</html>

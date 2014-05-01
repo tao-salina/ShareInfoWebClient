@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NPU Share Information Page</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" media="all and (min-width: 481px)" />
+		<script src="js/detectmobilebrowser.js"></script>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script>
+      $(document).ready(function () {
+          var url = "http://localhost:8888/query.jsp?type=top";
+          request = new XMLHttpRequest();
+          request.onload = function () {
+              if (request.status == 200) {
+                  displayInfo(request.responseText);
+              }
+          };
+          request.open("GET", url);
+          request.send(null);
+      });
+
+      function displayInfo(infosText) {
+          var infotable = document.getElementById("infosTable");
+          var sHtmlStr = "<tr><th>Title</th><th>Category</th><th>Type</th><th>Date</th></tr>";
+          
+          var infos = JSON.parse(infosText);
+          for (i = 0; i < infos.length && i<5; i++) {
+              if (i % 2 == 0) {
+                  sHtmlStr = sHtmlStr + "<tr class='odd'>";
+              } else {
+                  sHtmlStr = sHtmlStr + "<tr class='even'>";
+              }
+              var info = infos[i];
+              sHtmlStr = sHtmlStr + '<td><a href="infodetail.html" onclick="showDetail(\'' +info.ID + '\')">' + info.title + '</td>' + '<td>' + info.category + '</td>' + '<td>' + info.type + '</td>' + '<td>' + info.date + '</td></tr>';
+          }
+          infotable.innerHTML = sHtmlStr;
+      }
+
+	  function showDetail(id) {
+		   window.localStorage.setItem("id", id);
+	 }
+
+  </script>
+	</head>
+	<body>
+		<header>
+			
+		</header>
+		<nav >
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="newinfo.html">Post</a>
+				</li>
+				<li>
+					<a href="listinfos.html">List Info</a>
+				</li>
+			</ul>
+		</nav>
+		<section id="oncolor" class="column">
+			<h2>Shared Information Top 5</h2>
+			<div align="center">
+				<table id="infosTable">
+				</table>
+			</div>
+			
+		</section>
+		<aside id="visit" class="column">
+			<h3>Visit Us!</h3>
+			<dl>
+				<dt>
+					Location
+				</dt>
+				<dd>
+					1600 Saratoga Avenue, San Jose, CA
+				</dd>
+
+				<dt>
+					Hours
+				</dt>
+				<dd>
+					11:30 am  --  9:00 pm
+				</dd>
+				<dt>
+					Call us
+				</dt>
+				<dd>
+					(408) 871-0400
+				</dd>
+			</dl>
+			<p>
+				<div id="mapcontainer">
+					<p id="maplink">
+						<a href="http://goo.gl/maps/m8Rfh">View Google Map</a>
+					</p>
+				</div>
+
+		</aside>
+
+		<footer>
+			<p>
+				See you soon!
+			</p>
+		</footer>
+		<script type="text/javascript">
+			var breakpoint = 481, id = 'mapcontainer', viewportWidth = window.innerWidth;
+			if (viewportWidth > breakpoint) {
+				var mapElement = document.createElement('iframe');
+				mapElement.id = 'map';
+				mapElement.src = 'https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=1600+Saratoga+Avenue,+San+Jose,+CA&aq=&sll=37.269174,-119.306607&sspn=9.454681,21.643066&ie=UTF8&hq=&hnear=1600+Saratoga+Ave,+San+Jose,+California+95129&t=m&ll=37.293038,-121.988325&spn=0.020485,0.025749&z=14&output=embed';
+				document.getElementById(id).insertBefore(mapElement, maplink);
+			}
+		</script>
+	</body>
+</html>

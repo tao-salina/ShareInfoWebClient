@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NPU Share Information Page</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" media="all and (min-width: 481px)" />
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/additional-methods.js"></script>
+      <script>
+      $(document).ready(function () {
+          var url = "http://localhost:8888/query.jsp";
+          request = new XMLHttpRequest();
+          request.onload = function () {
+              if (request.status == 200) {
+                  displayInfo(request.responseText);
+              }
+          };
+          request.open("GET", url);
+          request.send(null);
+      });
+
+      function displayInfo(infosText) {
+          var infotable = document.getElementById("infosTable");
+          var sHtmlStr = "<tr><th>Title</th><th>Category</th><th>Type</th><th>Date</th><th></th></tr>";
+          
+          var infos = JSON.parse(infosText);
+          for (i = 0; i < infos.length; i++) {
+              if (i % 2 == 0) {
+                  sHtmlStr = sHtmlStr + "<tr class='odd'>";
+              } else {
+                  sHtmlStr = sHtmlStr + "<tr class='even'>";
+              }
+              var info = infos[i];
+              sHtmlStr = sHtmlStr + '<td><a href="infodetail.html" onclick="showDetail(\'' +info.ID + '\')">' + info.title + '</a></td>' + '<td>' + info.category + '</td>' + '<td>' + info.type + '</td>' + '<td>' + info.date + '</td><td><a href="listinfos.html" onclick="removeInfo(\'' +info.ID + '\')">Remove</a></td></tr>';
+          }
+          infotable.innerHTML = sHtmlStr;
+      }
+
+	  function showDetail(id) {
+		   window.localStorage.setItem("id", id);
+	 }
+
+	function removeInfo(id) {
+		  $.ajax({
+					url: "http://localhost:8888/deleteinfo.jsp?id="+id,
+					type: "get",
+					data: {
+						//id: id
+					},
+					success: function(){
+						location.reload();
+					},
+					error:function(){
+						alert("failure");
+					}
+				});
+	 }
+  </script>
+	</head>
+	<body>
+
+		<header>
+			
+		</header>
+		<nav >
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="newinfo.html">Post</a>
+				</li>
+				<li>
+					<a href="listinfos.html">List Info</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="leftAd"  class="column" >
+			<p><img src="images/p1.jpg" >
+			<p><img src="images/p2.jpg">
+		</div>
+		<div id="cartSection" class="column" >
+			<form id="cartForm" method="post">
+				<h2>Information List</h2>
+
+				<div align="center">
+					<table id="infosTable">
+					</table>
+				</div>
+				
+			</form>
+		</div>
+
+		<footer>
+			<p>
+				See you soon!
+			</p>
+		</footer>
+	</body>
+
+</html>
+

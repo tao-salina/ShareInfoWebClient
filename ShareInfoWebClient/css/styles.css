@@ -1,0 +1,350 @@
+/* Simple reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #dae4ee;
+	color: #284742;
+	font: 100% "Adobe Caslon Pro", Georgia, "Times New Roman", serif;
+}
+
+a, a:visited {
+	color: #42628f;
+}
+
+p {
+	margin: 0.5em 0.25em;
+}
+
+h1 {
+	color: #fb8c79;
+	font-size: 3.00em;
+	border: solid #594846;
+	border-width: 2px 0;
+	padding: 0.25em;
+	text-align: center;
+	font-variant: small-caps;
+}
+
+h2 {
+	color: #284742;
+	padding: 0.25em;
+	text-align: center;
+	font-variant: small-caps;
+}
+
+h3 {
+	color: #284742;
+	padding: 0.25em;
+	text-align: center;
+	font-variant: small-caps;
+}
+
+dl {
+	margin: 0 0.5em;
+}
+
+dt {
+	font-weight: bold;
+	margin: 0.5em 1em 0.5em 0;
+	border-bottom: 1px dashed #7b96bc;
+}
+
+nav {
+	border-bottom: 2px solid #594846;
+}
+
+nav ul li {
+	text-align: center;
+	display: block;
+	float: left;
+	padding: 0.25em 0;
+}
+
+nav li a {
+	color: #f9f3e9;
+	font-size: 1.25em;
+	text-decoration: none;
+}
+
+header p {
+	margin-top: 0;
+	text-align: center;
+}
+
+footer {
+	background: url('../images/footer.png');
+	color: #f9f3e9;
+	text-align: center;
+	padding: .5em 0;
+	font-style: italic;
+	margin-bottom: 0;
+}
+table {
+	width: 96%;
+	border-top: 1px solid #0078ae;
+	border-right: 1px solid #0078ae;
+	margin: 1em auto;
+	border-collapse: collapse;
+	background: #f4f9fe
+}
+tr.odd td, tr.odd .column1 {
+	background: #fdfdfd no-repeat;
+}
+td {
+	color: #678197;
+	border-bottom: 1px solid #0078ae;
+	border-left: 1px solid #0078ae;
+	padding: .3em 1em;
+	text-align: left;
+}
+th {
+	font-size: 14px;
+	font-weight: bold;
+	color: #678197;
+	text-align: left;
+	border-bottom: 1px solid #0078ae;
+	border-left: 1px solid #0078ae;
+	padding: .3em 1em;
+}
+/* Structure */
+/* Common Structural Rules */
+header, footer {
+	clear: both;
+}
+
+nav {
+	min-height: 25px;
+}
+
+img, object {
+	max-width: 100%;
+}
+
+nav ul li {
+	width: 33%;
+}
+
+header, footer, nav {
+	width: 100%;
+}
+
+nav {
+	width: 60%;
+	float: right;
+}
+
+/* colors List */
+.colorlist li {
+	display: block;
+	float: left;
+	text-align: center;
+	width: 50%;
+}
+
+.colorlist img {
+	width: 90%;
+	margin-bottom: 5px;
+}
+
+#oncolor, #oncolor ul, #oncolor ul li {
+	background: #fff;
+}
+
+#orderSection, #cartSection {
+	background: #ffffff;
+}
+
+/* colors List */
+.formlist li {
+	color: #284742;
+	display: block;
+	float: left;
+	text-align: left;
+	width: 40%;
+	margin: 10px 0 0 20px;
+	font-size: 1.1em;
+}
+
+.checklist li {
+	color: #284742;
+	display: block;
+	float: left;
+	text-align: left;
+	width: 40%;
+	margin: 10px 0 0 20px;
+	font-size: 1.25em;
+}
+
+#orderSection .small {
+	width: 128px;
+	font-size: .75em;
+}
+
+.btn {
+	display: inline-block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: .3125em .666666667em .25em;
+	margin: 2px 1px 3px;
+	border: 2px solid #284742;
+	border-radius: .25em;
+	overflow: hidden;
+	*overflow: visible;
+	vertical-align: middle;
+	position: relative;
+	font: 1.333333333em/1.333333333 "Arial Narrow", sans-serif;
+	text-decoration: none;
+	text-shadow: 0 0 1px rgba(255,255,255,0.3), 0 1px 1px rgba(0,0,0,0.4);
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	background: url('../images/button.jpg');
+	background-postion: 0;
+	color: #284742;
+	box-shadow: 0 1px 5px rgba(0,0,0,0.56);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+	cursor: pointer
+}
+
+.smallbtn {
+	background: url('../images/smallbt.png');
+	color: #f9c079;
+}
+.actions {
+	padding-left: 50px;
+	padding-top: 300px;
+}
+
+.actions1 {
+	position: absolute;
+	bottom: 40px;
+	right: 30px;
+}
+
+.rightDiv {
+	position: absolute;
+	bottom: 100px;
+	right: 30px;
+	color: #284742;
+}
+
+.largebtn {
+	width: 90%;
+	font-weight: bold;
+}
+#orderSection.normalbtn {
+	margin: 100px 100px 20px 0;
+	padding: .5em 0;
+	height: 300px;
+}
+
+label.error {
+	float: none;
+	color: red;
+	padding-left: 10px;
+	vertical-align: bottom;
+	font-size: .85em
+}
+
+#largeTableDiv {
+	display: block;
+}
+
+#smallTableDiv {
+	display: none;
+}
+
+.btn.btnBounce:hover, .btn.btnBounce:active, .btn.btnBounce:focus {
+	-ms-transform: scale(1.035);
+	-webkit-animation: bounce .5s 1 normal forwards;
+	animation: bounce .5s 1 normal forwards
+}
+@-webkit-keyframes bounce{0%{-webkit-transform:scale(1)}25%{-webkit-transform:scale(1.075)}30%{-webkit-transform:scale(1.04)}35%{-webkit-transform:scale(1)}40%{-webkit-transform:scale(0.96)}45%{-webkit-transform:scale(0.97)}50%{-webkit-transform:scale(1)}55%{-webkit-transform:scale(1.01)}60%{-webkit-transform:scale(1.01)}65%{-webkit-transform:scale(1)}70%{-webkit-transform:scale(0.98)}75%{-webkit-transform:scale(0.99)}
+80%{-webkit-transform:scale(1)}85%{-webkit-transform:scale(1)}90%{-webkit-transform:scale(1.01)}95%{-webkit-transform:scale(1.01)}100%{-webkit-transform:scale(1)}}@keyframes bounce{0%{transform:scale(1)}25%{transform:scale(1.075)}30%{transform:scale(1.04)}35%{transform:scale(1)}40%{transform:scale(0.96)}45%{transform:scale(0.97)}50%{transform:scale(1)}55%{transform:scale(1.01)}60%{transform:scale(1.01)}65%{transform:scale(1)}70%{transform:scale(0.98)}75%{transform:scale(0.99)}80%{transform:scale(1)}
+85%{transform:scale(1)}90%{transform:scale(1.01)}95%{transform:scale(1.01)}100%{transform:scale(1)}}@-webkit-keyframes shimmer{0%{left:-100%}100%{left:100%}}@keyframes shimmer{0%{left:-100%}100%{left:100%}}
+
+/* Mobile/lower-resolution devices */
+@media screen and (max-width: 480px) {
+	.column {
+		margin: 1em 0;
+		border-bottom: 1px dashed #7b96bc;
+	}
+
+	#visit {
+		width: 100%;
+	}
+
+	.colorlist li {
+		width: 50%;
+	}
+
+	#map {
+		display: none;
+	}
+
+	#leftAd {
+		display: none;
+	}
+
+	.formlist li {
+		width: 100%;
+		margin: 3px 0 0 20px;
+		font-size: .85em;
+	}
+
+	h1 {
+		font-size: 100%;
+	}
+	h2 {
+		font-size: 100%;
+	}
+
+	select {
+		font-size: small;
+		width: 80%;
+	}
+
+	input[type="text"] {
+		width: 80%;
+	}
+
+	button {
+		width: 80%;
+	}
+
+	#largeTableDiv {
+		display: none;
+	}
+
+	#smallTableDiv {
+		height: 330px;
+		display: block;
+	}
+
+	.actions1 {
+		position: absolute;
+		bottom: 30px;
+		left: 50px;
+	}
+	#cartSection {
+		width: 100%;
+		height: 300px;
+		position: relative;
+	}
+
+	label.error {
+		width: 100%;
+	}
+
+	.actions {
+		padding-left: 50px;
+		padding-top: 260px;
+	}
+}
+

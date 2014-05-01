@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NPU Share Information Page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="themes/jquery.mobile-1.1.1.min.css">
+		<link rel="stylesheet" href="themes/my-custom-theme.css.min.css" />
+		<link rel="stylesheet" href="themes/styles.css">
+		<!-- JavaScript HTML requirements -->
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.mobile-1.1.1.min.js"></script>
+		<script>
+			$(document).ready(init);
+
+			function init() {
+				$("#savebtn").click(saveinfo);
+			}
+
+			function saveinfo() {
+				var title = $("#title").val();
+				var category = $("#category").val();
+				var type = $("#type").val();
+				var description = $("#description").val();
+
+				$.ajax({
+					url: "http://localhost:8888/saveinfo.jsp",
+					type: "post",
+					data: { 
+						title: title,
+						category: category,
+						type: type,
+						description: description
+					},
+					success: function(){
+						alert("success");
+						$("#title").val("");
+						$("#description").val("");
+					},
+					error:function(){
+						alert("failure");
+					}
+				});
+			}
+
+		</script>
+	</head>
+	<body>
+		<div data-role="page" id="noteDetail">
+			<header data-role="header" >
+				<h1>New Poster</h1>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="index.html" data-icon="home" rel="external" data-theme="b" >Home</a>
+						</li>
+						<li>
+							<a href="newinfo.html" data-icon="grid" rel="external" class="ui-btn-active" data-theme="b" >Post</a>
+						</li>
+						<li>
+							<a href="listinfos.html" data-icon="star" rel="external" data-theme="b" >List</a>
+						</li>
+					</ul>
+				</div>
+			</header>
+
+			<section data-role="content" data-theme="a" >
+				<label for="Title">Title:</label>
+				<input type="text" id="title" name="title" value="" required="required"/>
+				<label for="Category">Category:</label>
+				<select name="category" id="category">
+               		<option value="House">House</option>
+               		<option value="Car">Car</option>
+               		<option value="Other">Other</option>
+            	</select>
+            	<label for="Type" >Type:</label>
+				<select name="type" id="type">
+               		<option value="Offered">Offered</option>
+               		<option value="Wanted">Wanted</option>
+            	</select>
+            	<label for="Description" >Description:</label>
+				<textarea name="description" id="description" ></textarea>
+				<button id="savebtn">
+					<span>Save</span>
+				</button>
+			</section>
+
+			<div data-role="footer" data-position="fixed">
+				<h4>&copy; 2013-2014</h4>
+			</div>
+		</div>
+	</body>
+</html>

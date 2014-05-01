@@ -1,0 +1,63 @@
+﻿#visit {
+	margin: 20px 68.75% 20px 20px;
+}
+
+#oncolor {
+	width: 50%;
+	float: right;
+	margin: 20px;
+}
+
+#orderSection {
+	width: 50%;
+	margin: 30px auto;
+	height: 410px;
+}
+
+#cartSection {
+	width: 70%;
+	margin: 40px 0 0 310px;
+	height: 420px;
+	position: relative;
+}
+
+header {
+	background: url('../images/header.png') no-repeat;
+	height: 100px;
+}
+
+#map {
+	width: 100%;
+	height: 300px;
+	border: none;
+	overflow: hidden;
+	margin: 0;
+}
+
+#leftAd {
+	width: 20%;
+	height: 300px;
+	border: none;
+	float: left;
+	margin: 20px;
+	text-align: center;
+}
+
+#rightAd {
+	width: 20%;
+	height: 300px;
+	border: none;
+	float: right;
+	margin: 20px;
+	text-align: center;
+}
+
+.navigation ul li {
+	width: 320px; /* 960/3 */
+	display: inline;
+}
+
+.header, .footer, .navigation {
+	clear: both;
+}
+

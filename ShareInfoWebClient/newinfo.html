@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NPU Share Information Page</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" media="all and (min-width: 481px)" />
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script src="js/jquery.validate.min.js"></script>
+		<script src="js/additional-methods.js"></script>
+		<script>
+			$(document).ready(init);
+
+			function init() {
+				$("#savebtn").click(saveinfo);
+			}
+
+			function saveinfo() {
+				var title = $("#title").val();
+				var category = $("#category").val();
+				var type = $("#type").val();
+				var description = $("#description").val();
+
+				$.ajax({
+					url: "http://localhost:8888/saveinfo.jsp",
+					type: "post",
+					data: { 
+						title: title,
+						category: category,
+						type: type,
+						description: description
+					},
+					success: function(){
+						alert("success");
+						$("#title").val("");
+						$("#description").val("");
+					},
+					error:function(){
+						alert("failure");
+					}
+				});
+			}
+
+			
+		</script>
+	</head>
+	<body>
+
+		<header>
+			
+		</header>
+		<nav >
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="newinfo.html">Post</a>
+				</li>
+				<li>
+					<a href="listinfos.html">List Info</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="leftAd"  class="column" >
+			<h3>New hot deals</h3>
+			<p><img src="images/p1.jpg" >
+			<p><img src="images/p2.jpg">
+		</div>
+		<form id="newinfoform" method="post">
+			<div id="cartSection" class="column" >
+				<div id="entryForm">
+					<h2>Create a poster</h2>
+					<ul class="formlist">
+						<li>
+							<label for="Title" class="entryLabel">Title: </label>
+						</li>
+						<li>
+							<input type="text" id="title" name="title" value="" required="required"/>
+						</li>
+						<li>
+							<label for="Category">Category:</label>
+						</li>
+						<li>
+							<select name="category" id="category">
+								<option value="House">House</option>
+								<option value="Car">Car</option>
+								<option value="Other">Other</option>
+							</select>
+						</li>
+
+						<li>
+							<label for="Type" >Type:</label>
+						</li>
+						<li>
+							<select name="type" id="type">
+								<option value="Offered">Offered</option>
+								<option value="Wanted">Wanted</option>
+							</select>
+						</li>
+						<li>
+							<label for="Description" >Description:</label>
+						</li>
+						<li>
+							<textarea name="description" id="description" rows="4" cols="50"></textarea>
+						</li>
+					</ul>
+
+				</div>
+
+				<div class="actions">
+					<button id="savebtn" class="btn smallbtn" type="button">
+						<span>Save</span>
+					</button>
+				</div>
+			</div>
+		</form>
+		<footer>
+			<p>
+				See you soon!
+			</p>
+		</footer>
+
+	</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NPU Share Information Page</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" media="all and (min-width: 481px)" />
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script>
+			$(document).ready(showInfo);
+
+			function showInfo() {
+				
+				var url = "http://localhost:8888/query.jsp";
+				request = new XMLHttpRequest();
+				request.onload = function () {
+					if (request.status == 200) {
+						displayInfo(request.responseText);
+					}
+				};
+				request.open("GET", url);
+				request.send(null);
+				
+			}
+
+			function displayInfo(infosText) {
+				var infoId = window.localStorage.getItem("id");
+				
+				var infos = JSON.parse(infosText);
+				for (i = 0; i < infos.length; i++) {
+					
+					var info = infos[i];
+					if (info.ID==infoId)
+					{
+						$("label[for='Title']").text(info.title);
+						$("label[for='Category']").text(info.category);
+						$("label[for='Type']").text( info.type);
+						$("label[for='Date']").text( info.date);
+						$("label[for='Description']").text( info.description);
+					}
+				}
+			  }
+			
+		</script>
+	</head>
+	<body>
+
+		<header>
+			
+		</header>
+		<nav >
+			<ul>
+				<li>
+					<a href="index.html">Home</a>
+				</li>
+				<li>
+					<a href="newinfo.html">Post</a>
+				</li>
+				<li>
+					<a href="listinfos.html">List Info</a>
+				</li>
+			</ul>
+		</nav>
+		<div id="leftAd"  class="column" >
+			<p><img src="images/p1.jpg" >
+			<p><img src="images/p2.jpg">
+			<p>
+		</div>
+		<div id="cartSection" class="column" >
+			<h2>Poster Details</h2>
+			<ul class="formlist">
+				<li class="labelLi" >
+					<label class="entryLabel">Ttile:</label>
+				</li>
+				<li>
+					<label for="Title" >&nbsp;</label>
+				</li>
+				<li class="labelLi" >
+					<label class="entryLabel">Category:</label>
+				</li>
+				<li>
+					<label for="Category" >&nbsp;</label>
+				</li>
+				<li class="labelLi" >
+					<label class="entryLabel">Type:</label>
+				</li>
+				<li>
+					<label for="Type" >&nbsp;</label>
+				</li>
+				<li class="labelLi" >
+					<label class="entryLabel">Date:</label>
+				</li>
+				<li>
+					<label for="Date" ></label>&nbsp;
+				<li class="labelLi" >
+					<label class="entryLabel">Description:</label>
+				</li>
+				<li>
+					<label for="Description" >&nbsp;</label>
+				</li>
+				
+			</ul>
+		</div>
+		<footer>
+			<p>
+				See you soon!
+			</p>
+		</footer>
+
+	</body>
+</html>
